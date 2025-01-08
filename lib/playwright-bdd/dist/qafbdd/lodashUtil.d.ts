@@ -1,0 +1,14 @@
+import { QafDocument } from "./qafDocument";
+import * as Types from '@cucumber/messages';
+export declare class LodashUtil {
+    static setTable(envelope: Types.Envelope, qafDocument: QafDocument): Types.Envelope;
+    static genEnvelopesWithPickles(envelope: Types.Envelope, qafDocument: QafDocument): Types.Envelope[];
+    static genPickles(envelope: Types.Envelope, qafDocument: QafDocument): Types.Pickle[];
+    static genTableAndPickles(envelope: Types.Envelope, qafDocument: QafDocument): Types.Pickle[];
+    static replaceParamWithValue(original: string, values: any[]): {
+        result: string;
+        changed: boolean;
+    };
+    static convertParam(currLine: string): string;
+}
+//# sourceMappingURL=lodashUtil.d.ts.map
