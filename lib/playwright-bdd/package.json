@@ -70,7 +70,7 @@
     "chance": "^1.1.12",
     "lodash": "^4.17.21",
     "supports-color": "8.1.1",
-    "xlsx": "^0.18.5"
+    "exceljs": "^4.4.0"
   },
   "devDependencies": {
     "@cucumber/compatibility-kit": "16.2.0",

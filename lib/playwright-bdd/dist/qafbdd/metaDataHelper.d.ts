@@ -4,9 +4,9 @@ export declare class MetaDataHelper {
     }): boolean;
     static getData(metadata: {
         [key: string]: any;
-    }): any[][];
+    }): Promise<any[][]>;
     static getDataByCmd(metadata: {
         [key: string]: any;
-    }, cwd: string): any[][];
+    }, cwd: string): Promise<any[][]>;
 }
 //# sourceMappingURL=metaDataHelper.d.ts.map

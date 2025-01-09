@@ -1,4 +1,4 @@
-import * as XLSX from 'xlsx';
+import * as ExcelJS from 'exceljs';
 export type SheetRange = {
     startRow: number;
     endRow: number;
@@ -6,14 +6,17 @@ export type SheetRange = {
     endCol: number;
 };
 export declare class ExcelUtil {
-    static getSheetDimensionsFromFileAndSheetName(file: string, sheetName: string): SheetRange;
-    static getSheetDimensions(sheet: XLSX.WorkSheet): SheetRange;
-    static getFirstRow(sheet: XLSX.WorkSheet, skipHeaderRow: boolean): number;
-    static getFirstCol(sheet: XLSX.WorkSheet): number;
-    static getSheetNames(file: string): string[];
-    static getExcelDataAsMap(file: string, sheetName: string): any[][];
-    static getWorkbook(file: string): XLSX.WorkBook;
-    static getTableDataAsMap(file: string, tableName: string, sheetName: string): any[][];
-    static findCell(sheet: XLSX.WorkSheet, searchText: string, firstCol: number, firstRow: number): XLSX.CellAddress;
+    static getSheetDimensionsFromFileAndSheetName(file: string, sheetName: string): Promise<SheetRange>;
+    static getSheetDimensions(sheet: ExcelJS.Worksheet): SheetRange;
+    static getFirstRow(sheet: ExcelJS.Worksheet, skipHeaderRow: boolean): number;
+    static getFirstCol(sheet: ExcelJS.Worksheet): number;
+    static getSheetNames(file: string): Promise<string[]>;
+    static getExcelDataAsMap(file: string, sheetName: string): Promise<any[][]>;
+    static getWorkbook(file: string): Promise<ExcelJS.Workbook>;
+    static getTableDataAsMap(file: string, tableName: string, sheetName: string): Promise<any[][]>;
+    static findCell(sheet: ExcelJS.Worksheet, searchText: string, firstCol: number, firstRow: number): {
+        r: number;
+        c: number;
+    };
 }
 //# sourceMappingURL=excelUtil.d.ts.map
