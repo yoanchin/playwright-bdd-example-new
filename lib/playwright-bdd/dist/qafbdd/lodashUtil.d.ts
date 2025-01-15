@@ -10,5 +10,6 @@ export declare class LodashUtil {
         changed: boolean;
     };
     static convertParam(currLine: string): string;
+    static convertDatatabletoPickleTable(dataTable: Types.DataTable): Types.PickleStepArgument;
 }
 //# sourceMappingURL=lodashUtil.d.ts.map
