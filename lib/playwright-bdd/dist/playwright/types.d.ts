@@ -10,7 +10,6 @@ export type TestTypeCommon = TestType<KeyValue, KeyValue>;
 export type PwBuiltInFixturesWorker = PlaywrightWorkerArgs & PlaywrightWorkerOptions;
 export type PwBuiltInFixturesTest = PlaywrightTestArgs & PlaywrightTestOptions;
 export type PwAttachment = TestInfo['attachments'][0];
-export type PwAnnotation = TestInfo['annotations'][0];
 export { PlaywrightLocation };
 export type DescribeConfigureOptions = {
     mode?: 'default' | 'parallel' | 'serial';

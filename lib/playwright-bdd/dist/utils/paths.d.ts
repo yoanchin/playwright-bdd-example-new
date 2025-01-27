@@ -13,11 +13,17 @@ export declare function relativeToCwd(absPath: string): string;
  * Extension can be a list: {js,ts}
  * See: https://github.com/cucumber/cucumber-js/blob/main/src/paths/paths.ts
  */
-export declare function resolveFiles(cwd: string, patterns: string[], extension: string): Promise<string[]>;
+export declare function resolveFiles(cwd: string, patterns: string[], extension: string): Promise<{
+    files: string[];
+    finalPatterns: string[];
+}>;
 /**
  * Appends file extension(s) to pattern.
  * Example: 'path/to/dir' -> 'path/to/dir/** /*.{js,ts}'
  * @public
  */
 export declare function finalizePattern(pattern: string, extension: string): string;
+export declare function sanitizeForFilePath(s: string): string;
+export declare function copyFileAndMakeWritable(from: string, to: string): Promise<void>;
+export declare function isDirectory(directoryPath: string): boolean;
 //# sourceMappingURL=paths.d.ts.map

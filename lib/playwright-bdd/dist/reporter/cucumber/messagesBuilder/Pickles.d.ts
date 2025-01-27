@@ -1,8 +1,11 @@
-import { AutofillMap } from '../../../utils/AutofillMap.js';
+/**
+ * Builds Pickle messages.
+ */
+import * as messages from '@cucumber/messages';
+import { AutofillMap } from '../../../utils/AutofillMap';
 import { TestCase } from './TestCase';
-import { ConcreteEnvelope } from './types';
 export declare class Pickles {
-    buildMessages(testCases: AutofillMap<string, TestCase>): ConcreteEnvelope<"pickle">[];
+    buildMessages(testCases: AutofillMap<string, TestCase>): Required<Pick<messages.Envelope, "pickle">>[];
     private buildPickleMessage;
 }
 //# sourceMappingURL=Pickles.d.ts.map

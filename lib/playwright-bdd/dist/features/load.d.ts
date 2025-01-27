@@ -13,7 +13,10 @@ export type GherkinDocumentWithPickles = GherkinDocument & {
 export type PickleWithLocation = Pickle & {
     location: Location;
 };
-export declare function resolveFeatureFiles(cwd: string, patterns: string | string[]): Promise<string[]>;
+export declare function resolveFeatureFiles(cwd: string, patterns: string | string[]): Promise<{
+    files: string[];
+    finalPatterns: string[];
+}>;
 export declare class FeaturesLoader {
     gherkinQuery: GherkinQuery;
     parseErrors: ParseError[];

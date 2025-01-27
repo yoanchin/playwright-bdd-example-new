@@ -1,5 +1,6 @@
 /**
  * Builds particular cucumber testCase.
+ * One testCase can have multiple runs, because of retries.
  *
  * About hooks:
  * There are many fixtures that wrap each test, they are actually hooks.
@@ -11,8 +12,8 @@
  */
 import * as messages from '@cucumber/messages';
 import { TestCaseRun } from './TestCaseRun';
-import { Hook, HookType } from './Hook';
-import { GherkinDocumentWithPickles, PickleWithLocation } from '../../../features/load.js';
+import { Hook, HooksGroup } from './Hook';
+import { GherkinDocumentWithPickles, PickleWithLocation } from '../../../features/types';
 import { ProjectInfo } from './Projects';
 type HookWithStep = {
     hook: Hook;
@@ -22,16 +23,16 @@ export declare class TestCase {
     #private;
     id: string;
     private gherkinDocuments;
+    private testRunStartedId;
     private beforeHooks;
     private afterHooks;
-    private mainSteps;
-    private logger;
-    constructor(id: string, gherkinDocuments: GherkinDocumentWithPickles[]);
+    private steps;
+    constructor(id: string, gherkinDocuments: GherkinDocumentWithPickles[], testRunStartedId: string);
     get projectInfo(): ProjectInfo;
     get pickle(): PickleWithLocation;
     addRun(testCaseRun: TestCaseRun): void;
-    getHooks(hookType: HookType): Map<string, HookWithStep>;
-    getMainSteps(): messages.TestStep[];
+    getHooks(hookType: HooksGroup): Map<string, HookWithStep>;
+    getSteps(): messages.TestStep[];
     buildMessage(): {
         testCase: messages.TestCase;
     };
@@ -42,12 +43,12 @@ export declare class TestCase {
     /**
      * Initially create steps from pickle steps, with empty stepMatchArgumentsLists.
      */
-    private addStepsFromPickle;
+    private createStepsFromPickle;
     /**
-     * Fill stepMatchArgumentsLists from all test runs.
+     * Fill stepMatchArgumentsLists from all test retries.
      * It allows to fill as many steps as possible.
      * Possibly, we write the same stepMatchArgumentsLists several times,
-     * looks like it's not a problem as they should be equal for all runs.
+     * looks like it's not a problem as they should be equal for all retries.
      */
     private addStepsArgumentsLists;
     private findPickle;

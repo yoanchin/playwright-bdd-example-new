@@ -3,7 +3,7 @@
  * Attaches extra fields (meta).
  */
 import * as messages from '@cucumber/messages';
-import { GherkinDocumentWithPickles } from '../../../features/load.js';
+import { GherkinDocumentWithPickles } from '../../../features/types';
 import { ConcreteEnvelope } from './types';
 import { ProjectInfo } from './Projects';
 type GherkinDocumentMeta = {

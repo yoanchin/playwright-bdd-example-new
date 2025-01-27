@@ -11,5 +11,6 @@ export declare function getMessagesBuilderRef(): {
     onBegin(config: pw.FullConfig): void;
     onTestEnd(test: pw.TestCase, result: pw.TestResult): void;
     onEnd(fullResult: pw.FullResult): void;
+    onError(error: pw.TestError): void;
 };
 //# sourceMappingURL=ref.d.ts.map

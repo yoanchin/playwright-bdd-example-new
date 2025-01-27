@@ -1,4 +1,4 @@
-import { FullConfig, FullResult, Reporter as PlaywrightReporter, TestCase, TestResult } from '@playwright/test/reporter';
+import { FullConfig, FullResult, Reporter as PlaywrightReporter, TestCase, TestError, TestResult } from '@playwright/test/reporter';
 import MessageReporter from './message';
 import HtmlReporter from './html';
 import JunitReporter from './junit';
@@ -23,6 +23,10 @@ export default class CucumberReporterAdapter<T extends keyof BuiltinReporters | 
     onBegin(config: FullConfig): void;
     printsToStdio(): boolean;
     onTestEnd(test: TestCase, result: TestResult): void;
+    /**
+     * Error not related to any test, e.g. worker teardown.
+     */
+    onError(error: TestError): void;
     onEnd(result: FullResult): Promise<void>;
     private createCucumberReporter;
 }

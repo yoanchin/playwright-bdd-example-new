@@ -1,9 +1,20 @@
-/// <reference types="node" />
 /**
  * Maps attachments to test steps.
  *
+ * UPDATE:
+ * Since pw 1.50 each step has 'attahcments' field.
+ * See: https://playwright.dev/docs/next/api/class-teststep#test-step-attachments
+ * See: https://github.com/microsoft/playwright/pull/34037
+ * Items in step.attachments are referencially equal to result.attachments:
+ * See: https://github.com/microsoft/playwright/pull/34037/files#diff-a99c58caa6261e2a4ea9b74b160d863e627fcb76f171c7bada90eb2065fa6af6R708
+ * So this module could compare attachments by reference.
+ * Note that 'testInfo.attach()' and 'testInfo.attachments.push()' behave differently:
+ * - testInfo.attach() creates extra step with category: 'attach' and puts attachment inside
+ * - testInfo.attachments.push() puts attachment directly to step.attachments
+ *
+ * PREVIOUS:
  * As there is no built-in method to map attachments with steps,
- * I've considered several approches:
+ * I've considered several approaches:
  *
  * 1. Track attachments count in onStepBegin/onStepEnd.
  * + intuitive and simple
@@ -51,26 +62,35 @@
  * 1. find all steps with category: 'attach' using deep-first search traversal
  * 2. iterate these steps in the following manner:
  *   2.1 take step and extract attachment name from step title
- *   2.2 find attachment with the same name, searching from the beginning of array
+ *   2.2 find this attachment by name in result.attachments, searching from the beginning of array
  *   2.3 map found attachment with step.parent
  *   2.4 remove found attachment from attachments array
  */
 import * as pw from '@playwright/test/reporter';
 export declare class AttachmentMapper {
     private result;
+    private allAttachments;
     private stepAttachments;
-    private unusedAttachments;
     constructor(result: pw.TestResult);
+    private getStdioAttachments;
     getStepAttachments(pwStep: pw.TestStep): {
         name: string;
         contentType: string;
-        path?: string | undefined;
-        body?: Buffer | undefined;
+        path?: string;
+        body?: Buffer;
     }[];
-    private mapAttachments;
-    private mapAttachment;
-    private mapUnusedAttachments;
-    private mapStdoutAttachments;
-    private getAfterHooksRoot;
+    populateStepAttachments(pwStep: pw.TestStep, { fromHook }?: {
+        fromHook?: boolean | undefined;
+    }): {
+        name: string;
+        contentType: string;
+        path?: string;
+        body?: Buffer;
+    }[];
+    hasUnprocessedAttachments(): boolean;
+    mapUnprocessedAttachments(pwStep: pw.TestStep): void;
+    private populateByAttachmentsField;
+    private populateByAttachCategory;
+    private assignAttachment;
 }
 //# sourceMappingURL=AttachmentMapper.d.ts.map

@@ -1,15 +1,15 @@
-import { UndefinedStep } from '../gen/testFile';
+import { StepData } from '../generate/test';
 export type SnippetOptions = {
     isTypeScript: boolean;
     isPlaywrightStyle: boolean;
     isDecorator: boolean;
 };
 export declare class Snippet {
-    private stepInfo;
+    private missingStep;
     private options;
     private generatedExpression;
     code: string;
-    constructor(stepInfo: UndefinedStep, options: SnippetOptions);
+    constructor(missingStep: StepData, options: SnippetOptions);
     private get pickleStep();
     private buildCode;
     private buildDecoratorCode;

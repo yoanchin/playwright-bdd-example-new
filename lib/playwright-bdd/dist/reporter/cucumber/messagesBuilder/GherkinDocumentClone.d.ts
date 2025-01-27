@@ -1,4 +1,4 @@
-import { GherkinDocumentWithPickles } from '../../../features/load.js';
+import { GherkinDocumentWithPickles } from '../../../features/types';
 export declare class GherkinDocumentClone {
     private gherkinDocument;
     private oldNewIds;

@@ -11,6 +11,9 @@ import * as pw from '@playwright/test/reporter';
 import * as messages from '@cucumber/messages';
 import { TestCaseRun } from './TestCaseRun';
 export type TestStepRunEnvelope = Pick<messages.Envelope, 'testStepStarted' | 'testStepFinished' | 'attachment'>;
+/**
+ * Run of messages.TestStep from hook or scenario.
+ */
 export declare class TestStepRun {
     protected testCaseRun: TestCaseRun;
     protected testStep: messages.TestStep;

@@ -11,7 +11,8 @@
  * https://github.com/vrymar/cucumber-json-report-formatter/tree/master
  */
 import * as messages from '@cucumber/messages';
-import BaseReporter, { InternalOptions, SkipAttachments } from './base';
+import BaseReporter, { InternalOptions } from './base';
+import { SkipAttachments } from './attachments/skip';
 type JsonReporterOptions = {
     outputFile?: string;
     skipAttachments?: SkipAttachments;

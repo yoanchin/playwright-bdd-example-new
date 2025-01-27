@@ -1,5 +1,3 @@
-/// <reference types="node" />
-/// <reference types="node" />
 import { Writable } from 'node:stream';
 import { TestStepResultStatus } from '@cucumber/messages';
 type IColorFn = (text: string) => string;

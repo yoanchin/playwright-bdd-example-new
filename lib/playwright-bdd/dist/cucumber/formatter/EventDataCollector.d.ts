@@ -3,7 +3,6 @@
  * Based on Cucumber, with some changes due to strictNullChecks errors.
  * See: https://github.com/cucumber/cucumber-js/blob/main/src/formatter/helpers/event_data_collector.ts
  */
-/// <reference types="node" />
 import { EventEmitter } from 'node:events';
 import * as messages from '@cucumber/messages';
 export interface ITestCaseAttempt {

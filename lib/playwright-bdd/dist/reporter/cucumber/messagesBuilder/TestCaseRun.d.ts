@@ -3,54 +3,56 @@
  */
 import * as pw from '@playwright/test/reporter';
 import * as messages from '@cucumber/messages';
-import { Hook, HookType } from './Hook';
+import { Hook, HooksGroup } from './Hook';
 import { TestCase } from './TestCase';
 import { AutofillMap } from '../../../utils/AutofillMap.js';
 import { TestStepRunEnvelope } from './TestStepRun';
 import { AttachmentMapper } from './AttachmentMapper';
 import { ProjectInfo } from './Projects';
-import { BddData, BddDataStep } from '../../../run/bddAnnotation/types.js';
+import { BddTestData } from '../../../bddData/types';
 export type TestCaseRunEnvelope = TestStepRunEnvelope & Pick<messages.Envelope, 'testCaseStarted' | 'testCaseFinished'>;
-export type ExecutedStepInfo = {
-    bddDataStep: BddDataStep;
-    pwStep?: pw.TestStep;
-};
 export declare class TestCaseRun {
+    bddTestData: BddTestData;
+    featureUri: string;
     test: pw.TestCase;
     result: pw.TestResult;
     hooks: AutofillMap<string, Hook>;
     id: string;
-    bddData: BddData;
     testCase?: TestCase;
     attachmentMapper: AttachmentMapper;
     projectInfo: ProjectInfo;
-    errorSteps: Set<pw.TestStep>;
+    errorSteps: Map<pw.TestStep, pw.TestError>;
     timeoutedStep?: pw.TestStep;
     private executedBeforeHooks;
     private executedAfterHooks;
-    private executedSteps;
-    constructor(test: pw.TestCase, result: pw.TestResult, hooks: AutofillMap<string, Hook>);
+    private executedBddSteps;
+    private bgRoots;
+    constructor(bddTestData: BddTestData, featureUri: string, test: pw.TestCase, result: pw.TestResult, hooks: AutofillMap<string, Hook>);
     getTestCase(): TestCase;
     isTimeouted(): boolean;
-    private generateTestRunId;
-    private extractBddData;
-    private fillExecutedSteps;
-    private fillExecutedHooks;
-    registerErrorStep(pwStep?: pw.TestStep): void;
-    registerTimeoutedStep(pwStep?: pw.TestStep): void;
     buildMessages(): (TestStepRunEnvelope | {
         testCaseStarted: messages.TestCaseStarted;
     } | {
         testCaseFinished: messages.TestCaseFinished;
     })[];
-    getExecutedHooks(hookType: HookType): Map<string, {
+    getExecutedHooks(hookType: HooksGroup): Map<string, {
         hook: Hook;
         pwStep: pw.TestStep;
     }>;
+    getStepError(pwStep: pw.TestStep): pw.TestError | undefined;
+    private generateTestRunId;
+    private fillExecutedBddSteps;
+    private fillExecutedBddStep;
+    private fillExecutedHooks;
+    registerErrorStep(pwStep: pw.TestStep, error: pw.TestError): void;
+    hasRegisteredError(error: pw.TestError): true | undefined;
+    registerTimeoutedStep(pwStep: pw.TestStep): void;
+    getUnprocessedErrors(): pw.TestError[];
+    private isProcessedError;
     private buildTestCaseStarted;
     private buildStepRuns;
     private buildTestCaseFinished;
     private findPlaywrightStep;
-    private getPossiblePlaywrightBddSteps;
+    private getPossiblePwSteps;
 }
 //# sourceMappingURL=TestCaseRun.d.ts.map

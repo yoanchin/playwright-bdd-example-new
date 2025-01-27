@@ -1,7 +1,5 @@
-import { BDDInputConfig } from './types';
-export declare function defineBddProject(config: BDDInputConfig & {
-    name: string;
-}): {
+import { BDDInputConfig, BDDProjectConfig } from './types';
+export declare function defineBddProject(config: BDDProjectConfig): {
     name: string;
     testDir: string;
 };

@@ -1,6 +1,6 @@
+import * as messages from '@cucumber/messages';
 import { TestCaseRun } from './TestCaseRun';
-import { GherkinDocumentWithPickles } from '../../../features/load.js';
-import { ConcreteEnvelope } from './types';
+import { GherkinDocumentWithPickles } from '../../../features/types';
 import { ProjectInfo } from './Projects';
 export declare class GherkinDocuments {
     private featuresLoader;
@@ -10,8 +10,8 @@ export declare class GherkinDocuments {
     load(testCaseRuns: TestCaseRun[]): Promise<void>;
     getDocumentsForProject(projectInfo: ProjectInfo): GherkinDocumentWithPickles[];
     buildMessages(): {
-        sources: ConcreteEnvelope<"source">[];
-        gherkinDocuments: ConcreteEnvelope<"gherkinDocument">[];
+        sources: Required<Pick<messages.Envelope, "source">>[];
+        gherkinDocuments: Required<Pick<messages.Envelope, "gherkinDocument">>[];
     };
     private fillProjectsPerFeaturePath;
     private fillGherkinDocumentsPerProject;

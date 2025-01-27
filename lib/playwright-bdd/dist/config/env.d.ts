@@ -3,13 +3,18 @@
  * For passing configs to playwright workers and bddgen.
  */
 import { BDDConfig } from './types';
-type OutputDir = string;
-type EnvConfigs = Record<OutputDir, BDDConfig>;
-export declare function saveConfigToEnv(config: BDDConfig): void;
-export declare function getConfigFromEnv(testDir: string, { throws }?: {
+type EnvConfigs = Record<string, BDDConfig>;
+/**
+ * Returns config dir for the first BDD config in env.
+ */
+export declare function getConfigDirFromEnv({ throws }?: {
     throws?: boolean | undefined;
-}): BDDConfig;
+}): string;
+export declare function saveConfigToEnv(config: BDDConfig): void;
+/**
+ * Note: Playwright's project.testDir is the same as BDD outputDir.
+ */
+export declare function getConfigFromEnv(absOutputDir: string): BDDConfig;
 export declare function getEnvConfigs(): EnvConfigs;
-export declare function hasBddConfig(testDir?: string): boolean;
 export {};
 //# sourceMappingURL=env.d.ts.map

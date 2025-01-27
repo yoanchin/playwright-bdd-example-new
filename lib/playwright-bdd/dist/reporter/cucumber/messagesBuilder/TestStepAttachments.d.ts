@@ -1,3 +1,6 @@
+/**
+ * Class for getting attachment messages for a particular step.
+ */
 import * as pw from '@playwright/test/reporter';
 import * as messages from '@cucumber/messages';
 import { TestCaseRun } from './TestCaseRun';
@@ -10,6 +13,5 @@ export declare class TestStepAttachments {
         attachment: messages.Attachment;
     }[];
     private buildAttachmentMessage;
-    private getAttachmentBodyBase64;
 }
 //# sourceMappingURL=TestStepAttachments.d.ts.map

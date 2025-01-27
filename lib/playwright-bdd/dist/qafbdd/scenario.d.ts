@@ -18,7 +18,7 @@ export declare class Scenario {
     protected testData: any[][];
     tableHeader?: Types.TableRow;
     tableBody?: Types.TableRow[];
-    constructor(testName: string, steps: StringTestStep[], metadata?: Map<string, Object>, hasDP?: boolean);
+    constructor(testName: string, steps: StringTestStep[], hasDP: boolean, metadata?: Map<string, Object>);
     setTestData(testData: any[][]): void;
     getTestData(): any[][];
     getHasDP(): boolean;

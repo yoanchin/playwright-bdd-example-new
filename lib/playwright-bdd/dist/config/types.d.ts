@@ -1,7 +1,7 @@
 /**
  * BDD Config type.
  */
-import { ImportTestFrom } from '../gen/formatter';
+import { ImportTestFrom } from '../generate/formatter';
 import { defaults } from './defaults';
 import { DisableWarningsConfig } from './warnings';
 type CucumberConfigDeprecated = {
@@ -41,18 +41,29 @@ export type BDDInputConfig = CucumberConfigDeprecated & {
     quotes?: 'single' | 'double' | 'backtick';
     /** Tags expression to filter scenarios for generation */
     tags?: string;
-    /** Add special BDD attachments for Cucumber reports */
+    /**
+     * Add special BDD attachments for Cucumber reports
+     * @deprecated since v8, now no bdd annotations are added
+     */
     enrichReporterData?: boolean;
     /** Set to true if your POMs have a state */
     statefulPoms?: boolean;
     /** Disable warnings */
     disableWarnings?: DisableWarningsConfig;
+    /** Behavior for missing step definitions */
+    missingSteps?: 'fail-on-gen' | 'fail-on-run' | 'skip-scenario';
+    /** Enables additional matching by keywords in step definitions */
+    matchKeywords?: boolean;
 };
 export type BDDConfig = BDDInputConfig & typeof defaults & {
+    configDir: string;
     featuresRoot: string;
     importTestFrom?: ImportTestFrom;
     features: string | string[];
     steps: string | string[];
+};
+export type BDDProjectConfig = BDDInputConfig & {
+    name: string;
 };
 export {};
 //# sourceMappingURL=types.d.ts.map

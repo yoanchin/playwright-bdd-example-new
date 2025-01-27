@@ -1,5 +1,3 @@
-/// <reference types="node" />
-/// <reference types="node" />
 import { Writable } from 'node:stream';
 import { EventEmitter } from 'node:events';
 import EventDataCollector from './EventDataCollector';

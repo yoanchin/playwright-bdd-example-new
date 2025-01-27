@@ -1,13 +1,12 @@
 /**
  * Generate and show snippets for missing steps.
  */
-import { TestFile } from '../gen/testFile';
+import { StepData } from '../generate/test';
 export declare class Snippets {
-    private files;
+    private missingSteps;
     private snippets;
     private snippetOptions;
-    constructor(files: TestFile[]);
-    hasUndefinedSteps(): boolean;
+    constructor(missingSteps: StepData[]);
     print(): void;
     private buildSnippetOptions;
     private buildSnippets;
