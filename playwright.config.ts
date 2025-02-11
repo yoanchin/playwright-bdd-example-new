@@ -10,11 +10,13 @@ export default defineConfig({
   testDir,
   timeout: 120_000,
   expect: { timeout: 10_000 },
-  reporter: 
-  [
-    ['list'],
-    ['json', {  outputFile: 'test-results.json' }],
-    cucumberReporter('html', { outputFile: 'actual-reports/report.html' })
+  reporter: [
+    cucumberReporter('html', {
+      outputFile: 'cucumber-report/index.html',
+      externalAttachments: true,
+      attachmentsBaseURL: 'http://127.0.0.1:8080/data',
+    }),
+    ['html', { open: 'never' }],
   ],
   use: {
     screenshot: 'on',
