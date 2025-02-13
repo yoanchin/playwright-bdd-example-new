@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "scripts": {
     "test": "npx bddgen && npx playwright test",
+    "test1": "npx bddgen && npx playwright test homepage.feature.spec.js",
     "watch:bdd": "nodemon -w ./features -w ./steps -e feature,js,ts --exec \"npx bddgen\"",
     "watch:pw": "playwright test --ui",
     "watch": "run-p watch:*",
     "report": "npx http-server ./cucumber-report -c-1 -o index.html"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@playwright/test": "1.41.2",
     "@types/node": "^20.9.4",
     "http-server": "14.1.1",
@@ -18,5 +20,10 @@
     "prettier-plugin-gherkin": "^3.1.1",
     "typescript": "^5.7.2",
     "playwright-bdd": "file:lib/playwright-bdd"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.7",
+    "picocolors": "^1.0.0"
   }
 }
