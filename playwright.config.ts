@@ -27,7 +27,6 @@ export default defineConfig({
         token: "",
       },
       projectKey: "MYT",
-      testPlan: "MYT-1",
       testExecution: 'MYT-4',
     },
   ],

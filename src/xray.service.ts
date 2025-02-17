@@ -56,8 +56,8 @@ export class XrayService {
     // Set Project Key
     if (!options.projectKey) throw new Error('"projectKey" option is missed. Please, provide it in the config');
 
-    // Set Test Plan
-    if (!options.testPlan) throw new Error('"testPlan" option are missed. Please provide them in the config');
+    // Set Test Execution
+    if (!options.testExecution) throw new Error('"testExecution" option are missed. Please provide them in the config');
   }
 
   async createRun(results: XrayTestResult, execInfo: ExecInfo) {
