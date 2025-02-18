@@ -14,9 +14,9 @@ export interface XrayOptions {
   server?: {
     token: string;
   };
-  projectKey: string;
-  testPlan: string;
-  testExecution?: string;
+  projectKey?: string;
+  testPlan?: string;
+  testExecution: string;
   revision?: string;
   description?: string;
   testEnvironments?: string[];

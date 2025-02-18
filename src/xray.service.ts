@@ -54,10 +54,10 @@ export class XrayService {
       this.initialzeJiraConnection(options);
     }
     // Set Project Key
-    if (!options.projectKey) throw new Error('"projectKey" option is missed. Please, provide it in the config');
+    //if (!options.projectKey) throw new Error('"projectKey" option is missed. Please, provide it in the config');
 
     // Set Test Plan
-    if (!options.testPlan) throw new Error('"testPlan" option are missed. Please provide them in the config');
+    //if (!options.testPlan) throw new Error('"testPlan" option are missed. Please provide them in the config');
   }
 
   async createRun(results: XrayTestResult, execInfo: ExecInfo) {
@@ -154,7 +154,7 @@ export class XrayService {
         console.log(`${bold(blue(' '))}`);
       }
 
-      if (this.runResult) writeRunResult(this.options.testPlan);
+      if (this.runResult) writeRunResult(this.options.testPlan?this.options.testPlan:'');
 
       console.log(`${bold(blue('-------------------------------------'))}`);
     } catch (error) {
