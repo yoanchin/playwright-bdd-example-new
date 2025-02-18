@@ -14,7 +14,7 @@ test-results
 playwright-report
 cucumber-report
 playwright-xray-error.log
-test/features/**/*.spec.js
+tests/features/**/*.spec.js
 actual-reports
 .nx
 /update.sh
