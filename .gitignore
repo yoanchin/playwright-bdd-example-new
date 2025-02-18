@@ -2,6 +2,7 @@
 .vscode
 .idea
 test-results.json
+playwright-xray-error.log
 # npm
 node_modules
 npm-debug.log
