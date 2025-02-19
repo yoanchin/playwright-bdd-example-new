@@ -9,21 +9,21 @@ export const XrayCloudStatus: XrayCloudStatusType = {
 };
 
 export interface XrayTestResult {
-  testExecutionKey?: string;
+  testExecutionKey: string;
   info: XrayInfo;
   tests?: XrayTest[];
 }
 
 export interface XrayInfo {
-  summary: string;
-  project: string;
+  summary?: string;
+  project?: string;
   description?: string;
   version?: string;
   user?: string;
   revision?: string;
   startDate: string;
   finishDate: string;
-  testPlanKey: string;
+  testPlanKey?: string;
   testEnvironments?: object;
 }
 
