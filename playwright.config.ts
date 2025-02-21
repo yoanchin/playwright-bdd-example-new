@@ -24,6 +24,8 @@ export default defineConfig({
         client_secret: "6e7f761f4d67aa2e3e0c9fa77a6315b7d5ee682da8f8576563aad3bb680ec971",
       },
       testExecution: 'MYT-4',
+      uploadScreenShot: true,
+      uploadTrace: true,
     },
   ],
     cucumberReporter('html', {
